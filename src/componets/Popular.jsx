@@ -33,7 +33,7 @@ function Popular() {
             gap: "5rem",
           }}
         >
-          {popular.map((recipes) => {
+          {popular?.map((recipes) => {
             return (
               <SplideSlide>
                 <Card>
@@ -57,11 +57,30 @@ const Card = styled.div`
   minheight: 25rem;
   borderradius: 2rem;
   overflow: hidden;
+  position:relative;
 
   img {
-    border-radius: 8px;
+    border-radius: 10px;
     width: 100%;
     flexbasis: 1;
+    left:0;
+    object-fit:cover
+    position:absolute
+
+  }
+  p{
+    position:absolute;
+    z-index:10;
+    bottom:0%;
+    transform:translate(-50%,0%);
+    width:100%;
+    text-align:center;
+    font-weight:600;
+    height:40%;
+    display:flex;
+    justify-content:center;
+    align-items :center;
+
   }
 `;
 
