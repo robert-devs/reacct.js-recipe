@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { SplideSlide, splide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -21,31 +23,37 @@ function Popular() {
   };
   return (
     <div>
-      {popular.map((recipes) => {
-        return (
-          <Wrapper>
-            <h3>{Popular}</h3>
-            {popular.map((recipes) => {
-              return (
+      <Wrapper>
+        <h3>{Popular}</h3>
+        <splide>
+          {popular.map((recipes) => {
+            return (
+              <splideSlide>
                 <Card>
                   <p>{recipes.title}</p>
                   <img src={recipes.image} alt="recipes images" />
                 </Card>
-              );
-            })}
-          </Wrapper>
-        );
-      })}
+              </splideSlide>
+            );
+          })}
+        </splide>
+      </Wrapper>
     </div>
   );
 }
 
 const Wrapper = styled.div`
-  margin: 4rem 0rem;
+  margin: 2rem;
 `;
+
 const Card = styled.div`
-  min-height: 25rem;
-  border-radius: 8px;
+  minheight: 25rem;
+  borderradius: 2rem;
+  overflow: hidden;
+
+  img {
+    border-radius: 8px;
+  }
 `;
 
 export default Popular;
