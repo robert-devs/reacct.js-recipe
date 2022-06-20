@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { SplideSlide, splide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/splide.min.css";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -16,27 +16,34 @@ function Popular() {
       );
       const data = await api.json();
       setPopular(data.recipes);
-      console.log(data.recipes);
-    } catch (error) {
-      console.log({ error });
-    }
+      console.log(data.recipe);
+    } catch (error) {}
   };
   return (
     <div>
       <Wrapper>
         <h3>{Popular}</h3>
-        <splide>
+
+        <Splide
+          options={{
+            perPage: 4,
+            arrows: true,
+            pagination: false,
+            drag: "free",
+            gap: "5rem",
+          }}
+        >
           {popular.map((recipes) => {
             return (
-              <splideSlide>
+              <SplideSlide>
                 <Card>
                   <p>{recipes.title}</p>
                   <img src={recipes.image} alt="recipes images" />
                 </Card>
-              </splideSlide>
+              </SplideSlide>
             );
           })}
-        </splide>
+        </Splide>
       </Wrapper>
     </div>
   );
@@ -53,6 +60,8 @@ const Card = styled.div`
 
   img {
     border-radius: 8px;
+    width: 100%;
+    flexbasis: 1;
   }
 `;
 
