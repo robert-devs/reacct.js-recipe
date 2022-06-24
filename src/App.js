@@ -1,9 +1,9 @@
 import Pages from "./Pages/Pages";
-
+import Category from "./componets/Category";
 function App() {
   return (
     <div className="App">
-      <h1>Hello there</h1>
+      <Category />
       <Pages />
     </div>
   );
