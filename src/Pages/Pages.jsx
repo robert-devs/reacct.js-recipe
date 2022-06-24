@@ -7,7 +7,7 @@ function Pages() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/" element={<Cuisine />} />
+      <Route path="/cuisine/:type" element={<Cuisine />} />
     </Routes>
   );
 }
