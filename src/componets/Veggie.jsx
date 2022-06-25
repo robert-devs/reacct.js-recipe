@@ -23,7 +23,7 @@ function Veggie() {
         const data = await api.json();
         localStorage.setItem("veggie", JSON.stringify(data.recipes));
         setVeggie(data.recipes);
-        console.log(data.recipes);
+        // console.log(data.recipes);
       } catch (error) {}
     }
   };
@@ -45,7 +45,7 @@ function Veggie() {
             return (
               <SplideSlide key={recipes.id}>
                 <Card>
-                  <Link to={"/recipe/" + recipes.id}>
+                  <Link to={"/recipes/" + recipes.id}>
                     <p>{recipes.title}</p>
                     <img src={recipes.image} alt="recipes images" />
                     <Gradient />
