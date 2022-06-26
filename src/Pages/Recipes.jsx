@@ -5,7 +5,7 @@ import styled from "styled-components";
 function Recipes() {
   const params = useParams();
   const [details, setDetails] = useState({});
-  const [activeTab, setActiveTab] = useState("Instructons");
+  const [activeTab, setActiveTab] = useState("instructions");
   const fetchDetails = async () => {
     const data = await fetch(
       `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
@@ -25,20 +25,26 @@ function Recipes() {
       </div>
       <Info>
         <Button
-          className={activeTab === "Instructions" ? "active" : ""}
-          onClick={() => setActiveTab("Instructions")}
+          className={activeTab === "instructions" ? "active" : ""}
+          onClick={() => setActiveTab("instructions")}
         >
           Instructions
         </Button>
         <Button
-          className={activeTab === "Ingredients" ? "active" : ""}
-          onClick={() => setActiveTab("Ingredients")}
+          className={activeTab === "ingredients" ? "active" : ""}
+          onClick={() => setActiveTab("ingredients")}
         >
           Ingredients
         </Button>
         <div>
-          {/* <h3>dangerouslySetInnerHTML= {{ __html: details.summary }}</h3> */}
+          <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+          <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
         </div>
+        <ul>
+          {details.extendedIngredients.map((ingredient) => (
+            <li key={ingredient.id}>{ingredient.original}</li>
+          ))}
+        </ul>
       </Info>
     </DetailWrapper>
   );
