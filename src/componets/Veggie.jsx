@@ -23,7 +23,6 @@ function Veggie() {
         const data = await api.json();
         localStorage.setItem("veggie", JSON.stringify(data.recipes));
         setVeggie(data.recipes);
-        // console.log(data.recipes);
       } catch (error) {}
     }
   };
@@ -35,9 +34,13 @@ function Veggie() {
         <Splide
           options={{
             perPage: 3,
-            arrows: true,
+            height: "15rem",
+            rewind: true,
+            arrows: false,
+            autoplay: true,
             pagination: false,
             drag: "free",
+            pauseOnHover: true,
             gap: "5rem",
           }}
         >
