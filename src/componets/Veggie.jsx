@@ -26,6 +26,7 @@ function Veggie() {
       } catch (error) {}
     }
   };
+
   return (
     <div>
       <Wrapper>
